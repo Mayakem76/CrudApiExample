@@ -2,10 +2,7 @@ package kemy.dev.CrudApiExample.entities;
 
 import lombok.*;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 /*
 write a Spring Boot application with the necessary dependencies that:
@@ -45,6 +42,7 @@ test the endpoints using Postman for:
 public class Car {
     @Id
     @Column(name = "id", nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String modelName;
     private String brandType;

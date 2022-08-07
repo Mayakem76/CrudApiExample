@@ -1,4 +1,9 @@
 package kemy.dev.CrudApiExample.repositories;
 
-public class CarRepository {
+import kemy.dev.CrudApiExample.entities.Car;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface CarRepository extends JpaRepository<Car,Long> {
 }
