@@ -35,10 +35,6 @@ test the endpoints using Postman for:
 * deleting all the db
 */
 
-@Getter
-@Setter
-@ToString
-@Data
 @Entity
 @Table(name = "Cars")
 public class Car {
@@ -64,9 +60,23 @@ public class Car {
         this.id = id;
     }
 
-    @Override
-    public String toString() {
-        return "Car{ "+ "id: "+id +"Model: "+ modelName+" Brand: "+brandType;
+    public void setId(long id) {
+        this.id = id;
     }
 
+    public String getModelName() {
+        return modelName;
+    }
+
+    public void setModelName(String modelName) {
+        this.modelName = modelName;
+    }
+
+    public String getBrandType() {
+        return brandType;
+    }
+
+    public void setBrandType(String brandType) {
+        this.brandType = brandType;
+    }
 }

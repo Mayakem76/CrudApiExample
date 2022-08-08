@@ -1,10 +1,8 @@
 package kemy.dev.CrudApiExample.controllers;
 
 import kemy.dev.CrudApiExample.entities.Car;
-import kemy.dev.CrudApiExample.repositories.CarRepository;
 import kemy.dev.CrudApiExample.services.CarService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.repository.query.Param;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -39,12 +37,9 @@ public class CarController {
         return carService.editCar(id, car);
     }
     */
-
-   @DeleteMapping("/{id}") //cancella car con @PathVariable
-    public String deleteCar (@PathVariable long id){
-        carService.deleteCar(id);
-        System.out.println("deleted car id: "+id);
-        return "deleted car id: "+id;
+    @DeleteMapping("/{id}")
+    public String deleteSingleCar(@PathVariable long id) {
+     return carService.deleteSingleCar(id);
     }
     @DeleteMapping("") //cancella tutte le cars
     public String deleteAllCars (){
