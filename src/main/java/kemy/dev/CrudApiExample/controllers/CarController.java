@@ -28,16 +28,12 @@ public class CarController {
             return carService.getSingleCar(id);
         }
 
-  /*  @GetMapping("/{id}")
-    public Optional<Car> getOneCar(@PathVariable long id){
-        return carService.getOneCar(id);
-    }*/
     @PutMapping ("")
     public Car editCar ( @RequestParam long id ,@RequestBody Car car) {
         car.setId(id);
         return carService.editCar(id, car);
     }
-    /* @PutMapping ("/{id}") Per inserire id nel path e non come parametro
+    /* @PutMapping ("/{id}") //Per inserire id nel path e non come parametro
     public Car editCar (@PathVariable long id,@RequestBody Car car) {
         car.setId(id);
         return carService.editCar(id, car);

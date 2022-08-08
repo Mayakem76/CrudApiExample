@@ -25,7 +25,6 @@ public class CarService {
     Optional <Car> car ;
 
 
-
     //CREATE
     public Car createCar(@RequestBody Car car){
         return carRepository.save(car);
@@ -45,11 +44,18 @@ public class CarService {
         return car;
         }
     }
-    //UPDATEc
-    public Car editCar (@PathVariable long id,@RequestBody Car car){
-        car.setId(id);
-        return carRepository.save(car);
+    //UPDATE
+
+   public Car editCar (@PathVariable long id,@RequestBody Car car) {
+       if (carRepository.existsById(id)) {
+       car.setId(id);
+       return carRepository.save(car);
+       } else
+       System.out.println("Requested car id: "+id+". Car id not found. Created new empty car");  //write in console "Not found!"
+       return carRepository.saveAndFlush(new Car());
     }
+
+
     //DELETE
     public String deleteCar(@PathVariable long id){
         carRepository.deleteById(id);
