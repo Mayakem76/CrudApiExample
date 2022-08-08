@@ -34,33 +34,16 @@ public class CarService {
     public List<Car> getAllCars(){
         return carRepository.findAll();
     }
+    public Optional<Car> getSingleCar(@PathVariable long id){
 
-    //return a single Car
+        if(carRepository.existsById(id)){
 
-  /*  public Car getSingleCar(@PathVariable long id){
-        Car car = carRepository.getReferenceById(id);
-        boolean existsById = carRepository.existsById(id);
-        if(existsById){
-            //return a single Car - if the id is not in the db
-            return car;
+        return carRepository.findById(id);}
+        else {
+        System.out.println("Requested car id: "+id+". Car id not found");  //write in console "Not found!"
+        car= Optional.of(new Car());
+        return car;
         }
-        //returns an empty Car
-        return new Car();
-    }
-
-   */
-
-
-  public Optional<Car> getSingleCar(@PathVariable long id){
-
-             if(carRepository.existsById(id)){
-
-             return carRepository.findById(id);}
-             else {
-                 System.out.println("Requested car id: "+id+". Car id not found");  //write in console "Not found!"
-                 car= Optional.of(new Car());
-                 return car;
-             }
     }
     //UPDATEc
     public Car editCar (@PathVariable long id,@RequestBody Car car){
