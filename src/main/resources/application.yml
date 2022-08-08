@@ -1,4 +1,7 @@
 spring:
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
   datasource:
     url: jdbc:mysql://localhost:3306/crud_api_example
     username: root
@@ -16,3 +19,4 @@ spring:
 #create: creates the schema, destroying previous data.
 #create-drop: drop the schema when the SessionFactory is closed explicitly, typically when the application is stopped.
 #none: does nothing with the schema, makes no changes to the database
+
