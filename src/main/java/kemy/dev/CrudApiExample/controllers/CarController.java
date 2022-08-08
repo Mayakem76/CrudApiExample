@@ -24,9 +24,14 @@ public class CarController {
         return carService.getAllCars();
     }
     @GetMapping("/{id}")
+    public Optional<Car> getSingleCar(@PathVariable long id){
+            return carService.getSingleCar(id);
+        }
+
+  /*  @GetMapping("/{id}")
     public Optional<Car> getOneCar(@PathVariable long id){
         return carService.getOneCar(id);
-    }
+    }*/
     @PutMapping ("")
     public Car editCar ( @RequestParam long id ,@RequestBody Car car) {
         car.setId(id);

@@ -32,21 +32,28 @@ test the endpoints using Postman for:
 * trying to delete an absent Car
 * deleting all the db
 */
-@AllArgsConstructor
-@NoArgsConstructor
+
 @Getter
 @Setter
+@ToString
 @Data
 @Entity
 @Table(name = "Cars")
 public class Car {
+
     @Id
     @Column(name = "id", nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String modelName;
     private String brandType;
+    public Car(){}
+    public Car(long id,String modelName,String brandType){
 
+    this.id=id;
+    this.brandType=brandType;
+    this.modelName=modelName;
+}
     public long getId() {
         return id;
     }
@@ -54,4 +61,10 @@ public class Car {
     public void setId(Long id) {
         this.id = id;
     }
+
+    @Override
+    public String toString() {
+        return "Car{ "+ "id: "+id +"Model: "+ modelName+" Brand: "+brandType;
+    }
+
 }
